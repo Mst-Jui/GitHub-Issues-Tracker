@@ -10,7 +10,7 @@ document.getElementById("login-btn").addEventListener("click",function(){
 //  match userName & password 
 if(userNameValue === "admin" && passwordValue === "admin123"){
   alert("Sign Successful");
-  window.location.assign("/all.html");
+  window.location.assign("/home.html");
 }
 else{
   alert("Try Again");

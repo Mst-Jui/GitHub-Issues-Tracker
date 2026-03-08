@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- title name -->
+  <title>GitHub Issues Tracker | All</title>
+
+   <!-- google font  -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+   
+   <!-- tailwind & daisyui & style.css  -->
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+   <!-- fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+  <!-- header section  -->
+  <header class="w-11/12 mx-auto flex justify-between mb-2">
+    <!-- logo  -->
+   <div class="flex gap-1 py-4">
+     <img class="w-[36px] h-[36px]" src="./assets/github-logo.png" alt="logo">
+     <p class="text-2xl font-semibold">GitHub Issues Tracker</p>
+   </div>
+   <!-- search  -->
+   <div class="py-4">
+    <div class="join">
+  <div>
+    <label class="input validator join-item">
+      <input type="text" placeholder="Search issues..." required />
+    </label>
+    <!-- <div class="validator-hint hidden">Enter valid email address</div> -->
+  </div>
+  <button class="btn btn-primary join-item">+ New Issue</button>
+</div>
+   </div>
+  </header>
+  <hr class="border-gray-300">
+
+  <!-- 3 tab ( All, Open, Closed)  -->
+  <section class="w-9/12 mx-auto mt-10 bg-white shadow-lg rounded-lg p-4">
+    <button onclick="loadAll()" class="btn btn-primary" id="all-btn">All</button>
+    <button onclick="showOpen()" class="btn btn-primary" id="btn-open">Open</button>
+    <button onclick="showClosed()" class="btn btn-primary" id="btn-close">Closed</button>
+  </section>
+
+
+  <!-- Issues and cards -->
+  <section class="w-11/12 mx-auto mt-10 bg-white shadow-lg rounded-lg p-4">
+    <!-- ISSUES  -->
+     <div class="flex justify-between">
+        <!-- left -->
+        <div class="flex items-center gap-2">
+          <img class="bg-blue-200 p-2 rounded-full" src="./assets/Aperture.png" alt="">
+          <div>
+            <p class="font-semibold text-xl">50 Issues</p>
+            <p class="text-gray-400">Track and manage your project issues</p>
+          </div>
+        </div>  
+          <!-- right  -->
+        <div>  
+           <div class="flex items-center gap-7">
+              <div class="flex items-center gap-2">
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <p class="font-medium">Open</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-[12px] h-[12px] rounded-full bg-purple-500"></div>
+              <p class="font-medium">Closed</p>
+              </div>
+            </div>
+        </div>
+
+     </div>
+     <hr class="border-gray-300 my-2">
+
+
+    <!-- ALL CARDS  -->
+    <div id="all-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6"></div>
+      <div class="hidden">
+        <div class="grid grid-cols-4 mt-6">
+        <div class="bg-white shadow-md p-4 rounded-md space-y-2 border-t-4 border-t-green-500">
+          <!-- icon & high  -->
+          <div class="flex justify-between items-center">
+          <img src="./assets/Open-Status.png" alt="">
+          <p class="bg-red-200 px-3 py-1 rounded-2xl text-red-400">High</p>
+          </div>
+        <!-- title & paragraph  -->
+        <div class="space-y-2">
+          <h2 class="font-semibold">Fix navigation menu on mobile devices</h2>
+          <p class="text-gray-400">The navigation menu doesn't collapse properly on mobile devices...</p>
+        </div>
+        <!-- badge  -->
+         <div class="flex justify-between items-center mb-6">
+          <div class="flex items-center bg-red-200 px-3 py-1 rounded-2xl text-red-400 border border-red-400 font-medium">
+            <span><i class="fa-solid fa-bug"></i></span>
+            <h3>Bug</h3>
+          </div>
+          <div class="flex items-center bg-yellow-100 px-3 py-1 rounded-2xl text-yellow-400 border border-yellow-400 font-medium">
+            <span><i class="fa-solid fa-bug"></i></span>
+            <h3>help wanted</h3>
+          </div>
+          
+         </div>
+         <!-- date  -->
+        <div class="py-2 border-t border-t-gray-200">
+            <p class="text-gray-400">#1by <span>john_doe</span></p>
+            <time class="text-gray-400" datetime="2024-01-15">1/15/2024</time>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- loading-spinner  -->
+       <div id="loading-spinner" class="h-[60vh] flex justify-center items-center hidden">
+        <span class="loading loading-spinner loading-xl"></span>
+       </div>
+    </div>
+
+    <!-- dialog  -->
+     <!-- You can open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_4.showModal()">open modal</button> -->
+<dialog id="card-detail-modal" class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <!-- design  -->
+      <!-- title  -->
+         <div id="modal-container"></div>
+
+    <!-- end  -->
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+  </section>
+
+
+
+
+
+  
+   <script src="./home.js"></script>
+</body>
+</html>

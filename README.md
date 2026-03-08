@@ -1,129 +1,117 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
+1️⃣ What is the difference between var, let, and const?  
+ANSWER:  
+ver:
+ 1. var is function-scoped.
+ 2. var can be redeclared.
+ 3. var can also be reassigned.
+ 4. var is hoisted and initialized with undefined.
+ 5. var is an old way of declaring variables, so it is usually avoided in modern JavaScript. 
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+let:
+1. let is block-scoped.
+2. let cannot be redeclared in the same scope.
+3. let can be reassigned.
+4. let is hoisted but stays in the Temporal Dead Zone (TDZ) until it is declared.
+5. let is used when the variable value needs to change.
 
----
+const:
+1. const is block-scoped.
+2. const cannot be redeclared or reassigned.
+3. const must be initialized when declared.
+4. const is hoisted but stays in the Temporal Dead Zone (TDZ).
+5. For objects and arrays, the contents can be changed, but the variable itself cannot be reassigned.
 
-# Assignment-05: GitHub Issues Tracker
+2️⃣ What is the spread operator (...)?  
+ANSWER:  
+The spread operator (...) in JavaScript is used to expand or spread elements of an array, object, or iterable into individual elements.It helps to copy, merge, or pass elements easily.Common Uses:   
 
+1. Copy an Array:__  
+const arr1 = [1, 2, 3];  
+const arr2 = [...arr1];  
+console.log(arr2); // [1,2,3]  
 
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
+2. Merge Arrays__  
+const a = [1, 2];  
+const b = [3, 4];  
+const result = [...a, ...b];  
+console.log(result); // [1,2,3,4] 
 
+3. Copy or Merge Objects__    
+const user = {name: "Jui"};  
+const updatedUser = {...user, age: 20};  
+console.log(updatedUser);  
 
-###  **Single Issue:**
-   - https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
+4. Pass Array Elements as Function Arguments__    
+const numbers = [5, 10, 15];  
+console.log(Math.max(...numbers));  
 
-   - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
+3️⃣ What is the difference between map(), filter(), and forEach()?  
+ANSWER:  
 
+These are JavaScript array methods used to loop through array elements, but they work differently.  
+map()  
+1. map() creates a new array.
+2. It transforms each element of the original array.
+3. The length of the array stays the same.  
+4. map() returns a new array.  
+example:  
+const numbers = [1, 2, 3, 4];  
+const result = numbers.map(num => num * 2);  
+console.log(result);   
+// [2, 4, 6, 8]  
 
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
+filter()  
+1. filter() creates a new array.  
+2. It keeps elements that match a condition.  
+3. The array length may be smaller.  
+4. filter() returns elements that pass the condition.  
+example:  
+const numbers = [1, 2, 3, 4];  
+const result = numbers.filter(num => num > 2);  
+console.log(result);  
+// [3, 4]  
 
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+forEach()  
+1. forEach() is used to loop through an array.  
+2. It does NOT return a new array.  
+3. It is usually used for side effects (printing, updating UI, etc.).  
+4. forEach() returns undefined.  
+example:  
+const numbers = [1, 2, 3];  
+numbers.forEach(num => {  
+  console.log(num);  
+});  
+output:  
+1  
+2  
+3  
 
+4️⃣ What is an arrow function?  
+ANSWER:  
+1. An arrow function is a shorter syntax for writing functions in JavaScript.
+2. Arrow function uses =>.
+3. Arrow functions make code shorter and cleaner.
+4. It was introduced in ES6.  
+example:1  
+const add = (a, b) => a + b;   
 
----
+example:2  
+const greet = () => {  
+console.log("Hello");  
+};  
 
-## 📝 Main Requirements
-
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
-
-
---- 
-
-
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
-
-- Load all issues and display as per Figma
-
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
-
-- Each card shows:
-  - Title
-  - Description
-  - Status
-  - Category
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on a tree name in a card will open a modal and show all the information about that Issue. 
-
-### 🚀 Challenges
-
-
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
-
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
-
----
-
-## 🛠️ Technology Stack
-
-- **HTML**
-- **CSS** (Vanilla/Tailwind/DaisyUI)
-- **JavaScript** (Vanilla)
-
----
-
-## 🔑 Demo Credentials
-
-```text
-Username: admin
-Password: admin123
-```
-
-
----
-
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
-
-
-## 📤 What to submit
-
-- **GitHub Repository Link:**
-- **Live Site Link:**
-
----
-
-
+5️⃣ What are template literals?  
+ANSWER:  
+- Template literals are a way to create strings with embedded expressions in JavaScript. 
+- They use backticks ` instead of single ' or double " quotes. 
+- Template literals are special strings, written with backticks `.   
+Benefits:  
+1. Easy string interpolation (${...})  
+2. Multi-line strings without \n  
+3. Can include expressions or variables directly.  
+example:  
+```javascript
+const a = 5;
+const b = 10;
+console.log(`The sum of ${a} and ${b} is ${a + b}.`);
+// Output: The sum of 5 and 10 is 15

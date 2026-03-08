@@ -271,9 +271,22 @@ const showModal=(data)=>{
 // 7 update count  
 
 const updateIssueCount =(data)=>{
+  
   const countElement = document.getElementById("issue-count");
   countElement.textContent = `${data.length} Issues`
   
+}
+
+// 8 search function 
+
+const search=async()=>{
+  removeActive()
+  const inputSearch = document.getElementById("input-search");
+  const inputSearchValue = inputSearch.value.trim().toLowerCase();
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputSearchValue}`
+  const res = await fetch(url);
+  const data = await res.json();
+  displayAll(data.data);
 }
 
 

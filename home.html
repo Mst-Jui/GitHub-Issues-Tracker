@@ -12,8 +12,9 @@
    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
    
    <!-- tailwind & daisyui & style.css  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   
 
    <!-- fontawesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,11 +33,12 @@
     <div class="join">
   <div>
     <label class="input validator join-item">
-      <input type="text" placeholder="Search issues..." required />
+      <span class="text-gray-400"><i class="fa-brands fa-sistrix"></i></span>
+      <input id="input-search" type="text" placeholder="Search issues..." required />
     </label>
     <!-- <div class="validator-hint hidden">Enter valid email address</div> -->
   </div>
-  <button class="btn btn-primary join-item">+ New Issue</button>
+  <button onclick="search()" class="btn bg-[#422AD5] text-white join-item">Search</button>
 </div>
    </div>
   </header>

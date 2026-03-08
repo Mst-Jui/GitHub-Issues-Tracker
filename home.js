@@ -19,9 +19,6 @@ const loadingSpinner=(status)=>{
   }
 }
 
-// const
-// const openModal
-
 
 // 1 
 const loadAll=async()=>{
@@ -41,6 +38,7 @@ const loadAll=async()=>{
 const displayAll=(data)=>{
   loadingSpinner(false);
   allIssues = data;
+  updateIssueCount(data);
   const allContainer = document.getElementById("all-container");
   allContainer.innerHTML = "";
   data.forEach((info)=>{
@@ -254,8 +252,15 @@ const showModal=(data)=>{
         ${data.priority.toUpperCase()}
       </span>
     </div>
-
+      
   </div>
+
+   <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button, it will close the modal -->
+        <button class="btn outline-none btn-primary">Close</button>
+      </form>
+    </div>
 
   `;
 };
@@ -263,26 +268,14 @@ const showModal=(data)=>{
 
 
 
+// 7 update count  
 
+const updateIssueCount =(data)=>{
+  const countElement = document.getElementById("issue-count");
+  countElement.textContent = `${data.length} Issues`
+  
+}
 
-// {
-// "status": "success",
-// "message": "Issue fetched successfully",
-// "data": {
-// "id": 33,
-// "title": "Add bulk operations support",
-// "description": "Allow users to perform bulk actions like delete, update status on multiple items at once.",
-// "status": "open",
-// "labels": [
-// "enhancement"
-// ],
-// "priority": "low",
-// "author": "bulk_barry",
-// "assignee": "",
-// "createdAt": "2024-02-02T10:00:00Z",
-// "updatedAt": "2024-02-02T10:00:00Z"
-// }
-// }
 
 
 loadAll();

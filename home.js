@@ -86,7 +86,7 @@ const displayAll=(data)=>{
       }
 
        return`
-         <div class="flex justify-between items-start bg-${color}-100 px-3 py-1 rounded-2xl text-${color}-400 border border-${color}-400 font-medium gap-1">
+         <div class="flex justify-between items-start bg-${color}-100 px-2 py-1 rounded-2xl text-[13px] text-${color}-400 border border-${color}-400 font-medium gap-1">
             <span><i class="${icon}"></i></span>
             <span>${label}</span>
           </div>

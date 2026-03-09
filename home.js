@@ -96,7 +96,7 @@ const displayAll=(data)=>{
     })
    
    .join('')
-  
+  const dateOnly = new Date(info.createdAt).toLocaleDateString("en-GB");
     div.innerHTML = `
      <div>
         <div>
@@ -125,7 +125,7 @@ const displayAll=(data)=>{
       ${info.assignee ? info.assignee : "Unassigned"}
        </span>
        </p>
-            <time class="text-gray-400" datetime="${info.createdAt}">${info.updatedAt}</time>
+            <time class="text-gray-400" datetime="${dateOnly}">${dateOnly}</time>
           </div>
         </div>
         </div>
@@ -215,7 +215,7 @@ const showModal=(data)=>{
   `;
 
 }).join("");
-
+const dateOnly = new Date(data.createdAt).toLocaleDateString("en-GB");
   modalContainer.innerHTML = `
   
   <h2 class="text-2xl font-bold mb-3">${data.title}</h2>
@@ -227,7 +227,7 @@ const showModal=(data)=>{
     
 
     <p class="text-gray-500">
-     • Opened by ${data.author} • ${data.createdAt}
+     • Opened by ${data.author} • ${dateOnly}
     </p>
   </div>
 
